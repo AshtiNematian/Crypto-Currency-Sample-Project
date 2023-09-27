@@ -91,6 +91,7 @@ WSGI_APPLICATION = 'Config.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
+# Write your information of DB in .env.example
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
