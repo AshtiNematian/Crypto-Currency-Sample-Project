@@ -67,13 +67,6 @@ Follow these instructions to get a copy of the project up and running on your lo
 4. Stay informed about cryptocurrency prices and market insights.
 5. Use the recommendations and predictions to make informed trading decisions.
 
-## Contributing
-
-We welcome contributions from the community! Please review the [CONTRIBUTING.md](CONTRIBUTING.md) file for more details on how to get involved.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
 ## Acknowledgments
 
