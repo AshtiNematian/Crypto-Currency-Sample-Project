@@ -1,0 +1,55 @@
+version: "3.8"
+
+services:
+    aseman:
+        container_name: aseman_api
+        image: ${IMAGE_TAG}
+        command: python manage.py runserver 0.0.0.0:5000
+        volumes:
+            - .:/code
+            - ./data/medias:/opt/app/medias/media
+        ports:
+            - "5100:5000"
+        env_file:
+            - .env
+        networks:
+            - aseman_network
+        depends_on:
+            - pgdb
+            - redis
+    celery:
+        container_name: aseman_backend_celery
+        image: ${IMAGE_TAG}
+        command: celery -A Config beat -l INFO
+        volumes:
+            - .:/code
+        env_file:
+            - .env
+        networks:
+            - aseman_network
+        depends_on:
+            - aseman
+            - redis
+    pgdb:
+        image: postgres:14
+        container_name: aseman_pgdb
+        environment:
+            - POSTGRES_DB=postgres
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=postgres
+        volumes:
+            - pgdata:/code
+        networks:
+            - aseman_network
+    redis:
+        container_name: aseman_backend_redis
+        image: "redis:alpine"
+        networks:
+          - aseman_network
+
+volumes:
+    pgdata:
+
+networks:
+  aseman_network:
+    external: true
