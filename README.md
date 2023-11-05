@@ -44,11 +44,12 @@ Follow these instructions to get a copy of the project up and running on your lo
    pip install -r requirements.txt
    ```
 
-4. Create the database schema and populate initial data:
+4. Create the database schema:
 
    ```shell
+   python manage.py makemigrations [app_name]
+
    python manage.py migrate
-   python manage.py loaddata initial_data.json
    ```
 
 5. Start the development server:
